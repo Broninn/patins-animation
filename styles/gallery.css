@@ -18,26 +18,17 @@ section.gallery {
   }
 
   & .content {
-    margin-top: 2rem;
-    display: grid;
-    grid-template-areas:
-      "A B B"
-      "C C D";
+    display: flex;
+    flex-direction: column;
     gap: 2.5rem;
+
+    margin-top: 2rem;
 
     & figure {
       position: relative;
       border-radius: 2.5rem;
       overflow: hidden;
       line-height: 0;
-
-      animation: image-appear linear backwards;
-      animation-timeline: view();
-      animation-range: 100px 300px;
-
-      &[data-delay] {
-        animation-range: 150px 350px ;
-      }
 
       & > img {
         height: 25rem;
@@ -103,5 +94,26 @@ section.gallery {
   from {
     opacity: 0;
     transform: translateY(100%);
+  }
+}
+
+@media (width >= 80em) {
+  section.gallery {
+    & .content {
+      grid-template-areas:
+        "A B B"
+        "C C D";
+      display: grid;
+
+      & figure {
+        animation: image-appear linear backwards;
+        animation-timeline: view();
+        animation-range: 100px 300px;
+
+        &[data-delay] {
+          animation-range: 150px 350px;
+        }
+      }
+    }
   }
 }
